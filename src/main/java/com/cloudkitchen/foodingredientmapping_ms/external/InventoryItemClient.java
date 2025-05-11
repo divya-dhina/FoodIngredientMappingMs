@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "inventoryitem-ms",url = "https://inventoryitemms.onrender.com")
 public interface InventoryItemClient {
 
-    @GetMapping("/api/food-items/{id}")
-    com.cloudkitchen.foodingredientmapping_ms.external.InventoryItemDto getFoodItemById(@PathVariable("id") Long id);
+    @GetMapping("/inventory/{id}")
+    com.cloudkitchen.foodingredientmapping_ms.external.InventoryItemDto getInventoryItemById(@PathVariable("id") Long id);
 }

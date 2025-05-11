@@ -25,7 +25,7 @@ public class FoodIngredientMappingService {
     public FoodIngredientMapping addMapping(FoodIngredientMapping mapping) {
         // Validate the foodItemId by calling FoodItem service
         foodItemClient.getFoodItemById(mapping.getFoodItemId());
-        inventoryItemClient.getFoodItemById(mapping.getInventoryItemId());
+        inventoryItemClient.getInventoryItemById(mapping.getInventoryItemId());
         return repository.save(mapping);
     }
 
