@@ -1,4 +1,4 @@
-package com.cloudkitchen.foodingredientmapping_ms.dto;
+package com.cloudkitchen.foodingredientmapping_ms.external;
 
 public class FoodItemDto {
 

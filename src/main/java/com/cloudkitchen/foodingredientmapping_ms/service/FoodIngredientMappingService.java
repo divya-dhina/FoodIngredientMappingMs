@@ -1,6 +1,7 @@
 package com.cloudkitchen.foodingredientmapping_ms.service;
 
 import com.cloudkitchen.foodingredientmapping_ms.external.FoodItemClient;
+import com.cloudkitchen.foodingredientmapping_ms.external.InventoryItemClient;
 import com.cloudkitchen.foodingredientmapping_ms.model.FoodIngredientMapping;
 import com.cloudkitchen.foodingredientmapping_ms.repository.FoodIngredientMappingRepository;
 import org.springframework.stereotype.Service;
@@ -12,15 +13,19 @@ public class FoodIngredientMappingService {
 
     private final FoodIngredientMappingRepository repository;
     private final FoodItemClient foodItemClient;
+    private final InventoryItemClient inventoryItemClient;
 
-    public FoodIngredientMappingService(FoodIngredientMappingRepository repository, FoodItemClient foodItemClient) {
+    public FoodIngredientMappingService(FoodIngredientMappingRepository repository,InventoryItemClient inventoryItemClient, FoodItemClient foodItemClient) {
         this.repository = repository;
         this.foodItemClient = foodItemClient;
+        this.inventoryItemClient = inventoryItemClient;
+
     }
 
     public FoodIngredientMapping addMapping(FoodIngredientMapping mapping) {
         // Validate the foodItemId by calling FoodItem service
         foodItemClient.getFoodItemById(mapping.getFoodItemId());
+        inventoryItemClient.getFoodItemById(mapping.getInventoryItemId());
         return repository.save(mapping);
     }
 
