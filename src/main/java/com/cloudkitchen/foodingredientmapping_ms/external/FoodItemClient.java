@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 // Replace with the correct service name registered in Eureka
-@FeignClient(name = "fooditem-ms")
+@FeignClient(name = "fooditem-ms",url = "https://fooditemms.onrender.com")
 public interface FoodItemClient {
 
     @GetMapping("/api/food-items/{id}")
